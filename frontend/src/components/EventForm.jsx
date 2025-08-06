@@ -14,7 +14,6 @@ const EventForm = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Fetch userId from backend
     if (token) {
       fetch("http://localhost:3000/user/me", { headers: { token } })
         .then(res => res.json())
@@ -53,104 +52,100 @@ const EventForm = () => {
   };
 
   return (
-    <form
-      className="event-form bg-gray-100 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-6 max-w-lg mx-auto border-2 "
-      onSubmit={handleSubmit}
-    >
-      <h2 className="text-3xl font-semibold mb-6 text-gray-800 text-center">
-        Create Event
-      </h2>
-      <div className="mb-5">
-        <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-          Event Name
-        </label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          value={form.title}
-          onChange={handleChange}
-          placeholder="Enter event name"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-      <div className="mb-5">
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-          Description
-        </label>
-        <textarea
-          name="description"
-          id="description"
-          value={form.description}
-          onChange={handleChange}
-          placeholder="Enter event description"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-      <div className="mb-5">
-        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
-          Date
-        </label>
-        <input
-          type="date"
-          name="date"
-          id="date"
-          value={form.date}
-          onChange={handleChange}
-          placeholder="YYYY-MM-DD"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-        <div className="flex space-x-4 mt-2">
-          <label>Start Time</label>
+    <div className="flex justify-center items-center py-8 bg-gradient-to-br from-blue-50 to-blue-100">
+      <form
+        className="w-full max-w-lg bg-white shadow-xl rounded-2xl px-10 pt-8 pb-10 border border-blue-100"
+        onSubmit={handleSubmit}
+      >
+        <h2 className="text-3xl font-bold mb-8 text-blue-700 text-center">Create Event</h2>
+        <div className="mb-6">
+          <label htmlFor="title" className="block text-base font-medium text-gray-700 mb-2">Event Name</label>
           <input
-            type="time"
-            name="startTime"
-            id="startTime"
-            value={form.startTime}
+            type="text"
+            name="title"
+            id="title"
+            value={form.title}
             onChange={handleChange}
-            placeholder="HH:MM"
+            placeholder="Enter event name"
             required
-            className=" px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mt-2"
-          />
-          <label>End Time</label>
-          <input
-            type="time"
-            name="endTime"
-            id="endTime"
-            value={form.endTime}
-            onChange={handleChange}
-            placeholder="HH:MM"
-            required
-            className=" px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mt-2"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
         </div>
-      </div>
-      <div className="mb-5">
-        <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
-          Location
-        </label>
-        <input
-          type="text"
-          name="location"
-          id="location"
-          value={form.location}
-          onChange={handleChange}
-          placeholder="Enter event location"
-          required
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Create Event
-      </button>
-      {message && <div className="mt-2 text-red-600">{message}</div>}
-    </form>
+        <div className="mb-6">
+          <label htmlFor="description" className="block text-base font-medium text-gray-700 mb-2">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="Enter event description"
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+        </div>
+        <div className="mb-6">
+          <label htmlFor="date" className="block text-base font-medium text-gray-700 mb-2">Date</label>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            value={form.date}
+            onChange={handleChange}
+            placeholder="YYYY-MM-DD"
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+          <div className="flex space-x-4 mt-3">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Start Time</label>
+              <input
+                type="time"
+                name="startTime"
+                id="startTime"
+                value={form.startTime}
+                onChange={handleChange}
+                placeholder="HH:MM"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">End Time</label>
+              <input
+                type="time"
+                name="endTime"
+                id="endTime"
+                value={form.endTime}
+                onChange={handleChange}
+                placeholder="HH:MM"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mb-6">
+          <label htmlFor="location" className="block text-base font-medium text-gray-700 mb-2">Location</label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            value={form.location}
+            onChange={handleChange}
+            placeholder="Enter event location"
+            required
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition"
+        >
+          Create Event
+        </button>
+        {message && <div className="mt-4 text-red-600 text-center">{message}</div>}
+      </form>
+    </div>
   );
 };
 

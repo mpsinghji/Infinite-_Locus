@@ -3,19 +3,15 @@ import React from 'react';
 const Navbar = () => {
   const handleLogout = () => {
     localStorage.clear();
-    // Try to use react-router-dom navigation, fallback to window.location
-    try {
-      window.location.href = '/login';
-    } catch {
-      // fallback
-      window.location = '/login';
-    }
+    window.location.href = '/login';
   };
 
   return (
-    <nav className="w-full flex justify-between items-center p-4 bg-blue-700 text-white mb-4">
-      <div className="font-bold text-xl">Event Dashboard</div>
-      <button onClick={handleLogout} className="bg-red-500 px-4 py-2 rounded hover:bg-red-600">Logout</button>
+    <nav className="sticky top-0 z-40 w-full flex justify-between items-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-lg rounded-b-lg">
+      <div className="flex items-center gap-2">
+        <span className="text-2xl font-bold tracking-tight">🎉 Event Dashboard</span>
+      </div>
+      <button onClick={handleLogout} className="bg-red-500 px-5 py-2 rounded-lg font-semibold shadow hover:bg-red-600 transition-all">Logout</button>
     </nav>
   );
 };

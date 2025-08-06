@@ -29,21 +29,17 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-2xl mb-4">Sign Up</h2>
-      <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required className="block w-full mb-2 p-2 border rounded" />
-      <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} required className="block w-full mb-2 p-2 border rounded" />
-      <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} required className="block w-full mb-2 p-2 border rounded" />
-      {/* <div className="mb-2">
-        <label className="mr-2">Role:</label> */}
-        {/* <select name="role" value={form.role} onChange={handleChange} className="p-1 border rounded">
-          <option value="user">User</option>
-          <option value="organizer">Organizer</option>
-        </select> */}
-      {/* </div> */}
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded" onClick={() => window.location.href = '/login'}>Sign Up</button>
-      {message && <div className="mt-2 text-red-600">{message}</div>}
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
+      <form onSubmit={handleSubmit} className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">Sign Up</h2>
+        <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required className="block w-full mb-4 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+        <input name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} required className="block w-full mb-4 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+        <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} required className="block w-full mb-4 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition" />
+        <button type="submit" className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition mb-2">Sign Up</button>
+        <div className="text-center text-sm text-gray-600 mb-2">Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a></div>
+        {message && <div className="mt-2 text-red-600 text-center">{message}</div>}
+      </form>
+    </div>
   );
 };
 

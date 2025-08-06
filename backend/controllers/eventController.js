@@ -90,11 +90,12 @@ export const updateEvent = async (req, res) => {
 
 export const deleteEvent = async (req, res) => {
     try {
+        const userId = req.body.userId || req.query.userId;
         const event = await Event.findById(req.params.id);
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
-        if (String(event.createdBy) !== req.body.userId) {
+        if (String(event.createdBy) !== userId) {
             return res.status(403).json({ message: 'Not authorized' });
         }
         await event.remove();
