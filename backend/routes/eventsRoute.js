@@ -1,14 +1,30 @@
 import express from "express";
-import {getAllEvents, createEvent, getEventById, updateEvent, deleteEvent} from "../controllers/eventController.js";
+import {
+  getAllEvents,
+  createEvent,
+  getEventById,
+  getMyEvents,
+  updateEvent,
+  deleteEvent,
+  registerForEvent,
+  getEventRegistrations,
+  getMyRegistrations
+} from "../controllers/eventController.js";
 import { authUser } from "../middleware/authUser.js";
 
-
 const eventrouter = express.Router();
-eventrouter.get("/",getAllEvents);
-eventrouter.post("/create-event", authUser, createEvent);
-eventrouter.get("/get-my-events",authUser, getEventById);
-eventrouter.put("/update-event",authUser, updateEvent);
-eventrouter.delete("/delete-event", authUser, deleteEvent);
 
+// Event routes
+eventrouter.get("/", authUser, getAllEvents);
+eventrouter.post("/", authUser, createEvent);
+eventrouter.get("/my", authUser, getMyEvents);
+eventrouter.get("/:id", authUser, getEventById);
+eventrouter.put("/:id", authUser, updateEvent);
+eventrouter.delete("/:id", authUser, deleteEvent);
+
+// Registration routes
+eventrouter.post("/register", authUser, registerForEvent);
+eventrouter.get("/:id/registrations", authUser, getEventRegistrations);
+eventrouter.get("/my-registrations", authUser, getMyRegistrations);
 
 export default eventrouter;
